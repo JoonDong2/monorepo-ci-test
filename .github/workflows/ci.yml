@@ -10,7 +10,6 @@ jobs:
   ci:
     name: CI Checks
     runs-on: ubuntu-latest
-    environment: develop
 
     steps:
       - name: Checkout
@@ -19,7 +18,7 @@ jobs:
       - name: Print TEST_KEY
         env:
           TEST_KEY: ${{ vars.TEST_KEY }}
-        run: env | grep TEST_KEY
+        run: echo "$TEST_KEY"
 
       - name: Print TEST_VARIABLE
         env:
