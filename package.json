@@ -1,0 +1,14 @@
+{
+  "name": "monorepo-ci-test",
+  "version": "0.0.0",
+  "description": ".",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joondong2",
+  "workspaces": [
+    "packages:*"
+  ],
+  "packageManager": "yarn@4.7.0"
+}
