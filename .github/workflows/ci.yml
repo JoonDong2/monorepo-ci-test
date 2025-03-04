@@ -47,6 +47,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          version: yarn changeset version
           commit: "🔖 자동 버전 업데이트"
           title: "🔖 Changeset Version Bump"
           publish: false
