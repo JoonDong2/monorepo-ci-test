@@ -1,6 +1,6 @@
 name: CI Checks
 
-on: 
+on:
   pull_request:
     branches:
       - main
@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      
+
       - name: Corepack Enable
         run: corepack enable
 
@@ -26,7 +26,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'yarn'
+          cache: "yarn"
 
       - name: Install dependencies
         run: yarn install --immutable
@@ -45,12 +45,12 @@ jobs:
           TEST_VARIABLE: ${{ vars.TEST_VARIABLE }}
         run: echo "$TEST_VARIABLE"
 
-      - name: Bump version
-        uses: changesets/action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          version: yarn changeset version
-          commit: "🔖 자동 버전 업데이트"
-          title: "🔖 Changeset Version Bump"
-          publish: false
+      # - name: Bump version
+      #   uses: changesets/action@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     version: yarn changeset version
+      #     commit: "🔖 자동 버전 업데이트"
+      #     title: "🔖 Changeset Version Bump"
+      #     publish: false
