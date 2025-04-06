@@ -1,5 +1,5 @@
 const sayHello = () => {
-  console.log('hello', 1)
-}
+  console.log("hello", 2);
+};
 
 module.exports = sayHello;
