@@ -1,5 +1,0 @@
----
-"pacakge-a": minor
----
-
-.
