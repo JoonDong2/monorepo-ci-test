@@ -1,0 +1,56 @@
+name: CI Checks
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  ci:
+    name: CI Checks
+    runs-on: ubuntu-latest
+    environment: develop
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Corepack Enable
+        run: corepack enable
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn install --immutable
+        shell: bash
+
+      - name: Print TEST_KEY
+        env:
+          TEST_KEY: ${{ vars.TEST_KEY }}
+        run: echo "$TEST_KEY"
+
+      - name: Print TEST_VARIABLE_1
+        run: echo ${{ vars.TEST_VARIABLE }}
+
+      - name: Print TEST_VARIABLE_2
+        env:
+          TEST_VARIABLE: ${{ vars.TEST_VARIABLE }}
+        run: echo "$TEST_VARIABLE"
+
+      # - name: Bump version
+      #   uses: changesets/action@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     version: yarn changeset version
+      #     commit: "🔖 자동 버전 업데이트"
+      #     title: "🔖 Changeset Version Bump"
+      #     publish: false
